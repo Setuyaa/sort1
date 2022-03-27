@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+void insert(int mas[], int n){
+    for (int i=0; i<n-1; i++){
+        int t=i+1;
+        int act=mas[t];
+        for (int j=i+1; j>0; j--){
+            if (act<mas[j-1]){
+                mas[j]=mas[j-1];
+                t=j-1;
+            }
+        }
+        mas[t]=act;
+    }
+}
+int main()
+{
+    int n;
+        cin >> n;
+        int *mas=new int[n];
+        srand(time(0));
+        for (int i=0;i<n;i++){
+            mas[i]=rand()%10+1;
+            cout << mas[i] << " ";
+        }
+        cout << endl;
+    insert(mas, n);
+    for (int i=0;i<n;i++)
+        cout << mas[i] << " ";
+}
